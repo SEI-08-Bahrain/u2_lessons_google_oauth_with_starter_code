@@ -1,5 +1,5 @@
  
-<img src="https://i.imgur.com/y42RtQC.jpg" width="600">
+<img src="https://i.imgur.com/ls8J7jU.jpg" width="40%">
 
 # OAuth Authentication<br>with<br>Express & Passport
 
@@ -184,6 +184,8 @@ If an application needs to access more than a user's basic profile, the **scope*
 
 Yes, OAuth is complex. But not to worry, we don't have to know all of the nitty gritty details in order to take advantage of it because we will be using PassportJS middleware that will handle most of the "OAuth dance" for us.
 
+Still confused?  Check out [this link](https://blog.postman.com/what-is-oauth-2-0/) for more info. 
+
 ### A Playful Way to Understand how Oauth Works
 
 Imagine Nabeel and Salman are students who want to access a super cool club (OAuth-protected resources), but they need special VIP passes (tokens) to get in. Here's how it goes:
@@ -294,7 +296,7 @@ Time to register our app...
 
 <img src="https://i.imgur.com/dgKSFOG.png">
 
-> Note: The project name must be globally unique, so Google will append and additional id to the name you provide.
+> Note: The project name must be globally unique, so Google will append an additional id to the name you provide.
 
 - It might take a bit to create the project.  When done, click SELECT PROJECT:
 
@@ -458,6 +460,20 @@ Before we install Passport and a strategy, we need to install the [`express-sess
 
 This middleware helps the server remember a user's browser session by using a session id stored in a cookie. Passport uses this session to save important data for looking up users in the database. 
 
+In the context of Passport middleware, cookies are often used to maintain a user's session and authentication state across multiple HTTP requests. When a user logs in, Passport typically serializes the user information into a session, and this serialized user information is stored in a cookie.
+
+#### Step-by-step overview of the process:
+
+1. **Serialization:** When a user logs in, Passport serializes the user information. Serialization involves converting the user object into a format that can be easily stored and later reconstructed.
+
+2. **Cookie Storage:** The serialized user information is then stored in a cookie. This cookie is sent to the user's browser and is usually set to expire after a certain period. The cookie is often signed or encrypted to ensure its integrity and security.
+
+3. **Subsequent Requests:** In subsequent requests, the user's browser automatically includes the cookie containing the serialized user information. Passport middleware, specifically the `passport.initialize()` and `passport.session()` middleware, is responsible for deserializing the user information from the cookie and attaching it to the request object.
+
+4. **Deserialization:** Passport deserializes the user information by extracting it from the cookie. The deserialized user object is then attached to the `request.user` property, making it accessible to route handlers.
+
+5. **Authentication State:** The `request.user` property now holds the authenticated user's information, allowing the application to check if the user is authenticated and retrieve additional details from the user object stored in the database.
+
 Think of the session middleware as the organizer at a party. When a guest (user) arrives, the organizer hands them a special wristband (cookie with a session id). This wristband is the express-session middleware at work. It helps the server (organizer) recognize the guest and remember details about them throughout the party (user's interactions with the website).
 
 So, when you install the express-session middleware, you essentially set up this wristband system. The middleware takes care of creating and managing these special wristbands (cookies with session ids) for each visitor. It enables your Express backend to handle and remember user sessions seamlessly.
@@ -612,16 +628,6 @@ Time for a few questions...
 <hr>
 </details>
 
-<details>
-<summary>
-👀 Do you need to sync your code?
-</summary>
-<hr>
-
-**`git reset --hard origin/sync-16-sessions`**
-
-<hr>
-</details>
 
 ### Step 5 - Install Passport
 
@@ -944,16 +950,6 @@ passport.deserializeUser(async function(id, cb) {
 
 Let's do another error check.
 
-<details>
-<summary>
-👀 Do you need to sync your code?
-</summary>
-<hr>
-
-**`git reset --hard origin/sync-17-passport`**
-
-<hr>
-</details>
 
 ### Step 9 - Define Routes for Authentication
 
@@ -1123,18 +1119,10 @@ There's a `class="login"` in use - add the following to the bottom of **public/s
 
 We've finally got to the point where you can test out our app's authentication!
 
-May the force be with us!
+For Frodo!
 
-<details>
-<summary>
-👀 Do you need to sync your code?
-</summary>
-<hr>
+<img src="https://i.imgur.com/413VjkQ.jpg" width="60%">
 
-**`git reset --hard origin/sync-18-login-out`**
-
-<hr>
-</details>
 
 ## 7. Code the User Stories
 
@@ -1305,17 +1293,6 @@ That should take care of our first user story - try it out!
 <img src="https://i.imgur.com/zwYPXj4.png">
 
 Yes, the UX is not that great because of the full-page refresh, but we'll address that when we develop single-page apps with React.
-
-<details>
-<summary>
-👀 Do you need to sync your code?
-</summary>
-<hr>
-
-**`git reset --hard origin/sync-19-first-user-story`**
-
-<hr>
-</details>
 
 ### Code the Next User Story
 
@@ -1560,17 +1537,9 @@ router.post('/movies/:movieId/performers', ensureLoggedIn, performersCtrl.addToC
 
 Now you're ready to start your project and implement OAuth authentication before any other CRUD functionality.
 
-<details>
-<summary>
-👀 Do you need to sync your code?
-</summary>
-<hr>
 
-**`git reset --hard origin/sync-20-finish`**
-
-<hr>
-</details>
-
+<img src="https://i.imgur.com/wZrc2BM.png" width="60%">
+ 
 ## 9. 💪 Challenge Exercise (optional)
 
 As an optional challenge exercise, use the [Guide to User-Centric CRUD using Express & Mongoose](https://gist.github.com/jim-clark/a714016bab26fad52106f6b2490e3eb7) to help you implement the following user story:
